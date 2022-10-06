@@ -11,8 +11,9 @@ Patients in the ICU must be treated based on the level of risk of mortality for 
 - The models we intend to try are Random Forest (RF), Neural Network (NN), Explainable Boosting Machine (EBM), and XGBoost. Neural networks are notorious for being difficult to interpret but accurate, but EBMs are found to be comparably accurate and interpretable. 
 
 ## Potential Results and Discussion 
-For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall. 
-We will do a detailed analysis of how our model performs in predictions. 
+We hypothesize that a variety of indicators play an important role in patient survival, including age, BMI, and the ICU admit source. Furthermore, traits that indicate that the patient was healthy prior to the admission would boost their survival chances. 
+
+We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
 
 ## Proposed Timeline
 [Machine Learning Gantt Chart.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9720162/Machine.Learning.Gantt.Chart.xlsx)
