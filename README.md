@@ -2,7 +2,7 @@
 
 ## Introduction/Background 
 The need for intensive care unit (ICU) patient care expands each year (3). One of the greatest issues that ICU clinicians face is treating and monitoring acutely ill patients (3). This dataset includes the electronic health record data of 250,000 patients from the Australian and New Zealand Intensive Care Society Adult Patient Database (ANZICS-APD) and 130,000 patients from the US eICU Collaborative Research Database (eICU-CRD) (1) summarized by APACHE (Acute Physiology and Chronic Health Evaluation) data grouped by diagnosis bodies (e.g., cardiovascular, gastrointestinal, etc.). The data collected reflects the patient’s first 24 hours stay in the ICU and is labelled by patient mortality. 
-## Problem Definitions 
+## Problem Definition
 Patients in the ICU must be treated based on the level of risk of mortality for the patient, but there is no universal way to test this between patients with different ailments. We will create a model that predicts mortality in ICU patients by assessing their level III APACHE score for various diagnostic bodies. With this model, clinicians will have a single metric to use to assess risk levels. 
 ## Methods 
 - For **data cleaning**, we will have to look at the percentage of missing values and near-zero variance to eliminate features. In preliminary data processing, we observe that 74 features out of the original 186 have at least 50% of the values missing. For the remaining features, we will impute missing values to the best of our ability. We may consider binning features such as age, and for categorical features, we will have to find an encoding (perhaps one-hot). There is a 10:1 data imbalance, so we may do some undersampling to correct for that.   
