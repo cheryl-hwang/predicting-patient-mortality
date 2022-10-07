@@ -16,7 +16,8 @@ We hypothesize that a variety of indicators play an important role in patient su
 We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
 
 ## Proposed Timeline
-[Machine Learning Gantt Chart.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9720162/Machine.Learning.Gantt.Chart.xlsx)
+[Machine Learning Gantt Chart_Phase1.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9730315/Machine.Learning.Gantt.Chart_Phase1.xlsx)
+
 
 ## Contribution Table
 <img width="653" alt="Screen Shot 2022-10-05 at 9 20 10 PM" src="https://user-images.githubusercontent.com/115046770/194192815-c4be91dc-0f74-4568-a799-bc9ff1cac4f1.png">
