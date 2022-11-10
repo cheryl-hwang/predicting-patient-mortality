@@ -9,13 +9,29 @@ This dataset includes the electronic health record data of 250,000 patients from
 
 Prior to data cleaning, there are 91,713 entries, each corresponding to a unique patient encounter, and 186 features. 
 ## Methods 
+### Initial Data Exploration
+
+These visualizations were created with the IntrepretML Package in order to assess the data at a high level. 
+
+![*Figure 1*. Age Distribution Plot](age_distribution.png)
+
+#### *Figure 1*. Age Distribution Plot. 
+
+This plot shows the age distribution of all the patients in the dataset. The dataset is skewed left with the majority of the patients >50 years old. This plot also shows the imbalance of labels. The majority of positive labels (marking patient expired) is with the majority of the patients (>50 years), which is expected.
+
+![*Figure 2*. Label Distribution.](label_distribution.png)
+
+#### *Figure 2*. Label Distribution.
+
+Our dataset has a 10:1 imbalance, favoring non-expired patients (marked as 0). Details on how this is accounted for is expanded upon in the next section.
+
 ### Data Cleaning
 
 
 We imputed missing values for continuous features with the median. For categorical variables, we imputed missing values with the label “Missing” and one-hot encoded the features. One-hot encoding led to the number of features increasing from 186 to 238. We chose not to use an ordinal encoding, as the categorical variables have no ranking or hierarchical relationship between each other.  
 
 
-To account for the 10:1 data imbalance, we used a combination of under- and over-sampling with the package imblearn. First, we defined an oversampling strategy with 0.40; this means that in the original set of 0: 83798 and 1: 7915, we oversample the number of minority instances to achieve 40% of the majority class. However, the danger with oversampling the minority class is that we may increase the likelihood of overfitting, the phenomenon where we observe low training error but high testing error. To mitigate this error, we then undersampled the data with a strategy of 0.70.  This means that 70% of the minority instances should make up the number of majority instances. In the end, our Counter dict turned out like this: 
+To account for the 10:1 data imbalance (*Figure 2*), we used a combination of under- and over-sampling with the package imblearn. First, we defined an oversampling strategy with 0.40; this means that in the original set of 0: 83798 and 1: 7915, we oversample the number of minority instances to achieve 40% of the majority class. However, the danger with oversampling the minority class is that we may increase the likelihood of overfitting, the phenomenon where we observe low training error but high testing error. To mitigate this error, we then undersampled the data with a strategy of 0.70.  This means that 70% of the minority instances should make up the number of majority instances. In the end, our Counter dict turned out like this: 
 
 ```
 Counter({0: 83798, 1: 7915}) # prior to any sampling 
@@ -60,9 +76,9 @@ We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Fo
 For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 1*.
 
 Below is the baseline ROC, bolded in *Table 1*.
-![*Figure 1*. The ROC for the baseline model.](baseline_AUROC.png)
+![*Figure 3*. The ROC for the baseline model.](baseline_AUROC.png)
 
-#### *Figure 1*. The ROC for the baseline model.
+#### *Figure 3*. The ROC for the baseline model.
 
 
 ### Model Performances and Parameters
@@ -81,11 +97,24 @@ Below is the baseline ROC, bolded in *Table 1*.
 
 #### *Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
 
-### Discussion
-We hypothesize that a variety of indicators play an important role in patient survival, including age, BMI, and the ICU admit source. Furthermore, traits that indicate that the patient was healthy prior to the admission would boost their survival chances. 
+### Feature Selection Results
+
+We tried 4 different forms of feature selection: k means ANOVA, forward feature selection, backward feature selection, and Random Forest Classifier’s (RFC) feature_importances. 
+
+
+A feature selected from k means ANOVA, RFC feature_importances, and forward selections is d1_lactate_max, which is the highest concentration of lactate in the patient’s serum or plasma during their first 24 hour stay. Lactate concentration in plasma is directly correlated with tissue hypoxia, which is a lack of oxygen in the tissue and very life-threatening. This is an interesting feature to pursue. 
+Kmeans ANOVA, RFC feature_importances, and forward selection all pulled out lab vitals (marked by d1). It may be worthwhile to pull out these features specifically and rank their relative importances.  
+
+
+The k means-based feature selection pulled out three gcs values are integer scores that specify a patient’s APACHE score on the Glasgow Coma scale, [gcs_eyes_apache' 'gcs_motor_apache' 'gcs_verbal_apache' ]. RFC feature_importances also pulled out gcs_eyes_apache. Eyes, motor, and verbal APACHE are the components of this test and together they assess a patient’s consciousness. It is expected that if these scores are related that they would have similar ANOVA scores. As these scores are related, it might be valuable to test their collinearity, and, if highly correlated, combine these three scores moving forward. 
+
+
+The forward feature selection and RFC feature_importances pulled out a few more Apache values. The only one in common is urineout_apache, which is the total urine expelled during the first 24 hours of stay. The amount of urine expelled is correlated with bodily failure, where less urine means higher failure. These two methods also pulled out some binary features that are expected, such as aids, cirrhosis, lymphoma, and readmission status. The only binary feature that was pulled out and unexpected is 'ethnicity_Native American'. This may be because there is a small total of this feature and results were skewed.  
 
 We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
 
+### Next Steps
+Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model
 
 ## Proposed Timeline
 [Machine Learning Gantt Chart_Phase1.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9730315/Machine.Learning.Gantt.Chart_Phase1.xlsx)
@@ -97,7 +126,7 @@ We will do a detailed analysis of how our model performs in predictions. For sup
 | Shravani Dammu | Attempted running Hierarchical clustering, second round of KMeans (along with Positive/Negative percentage per cluster). Found top Feature_Importances from the trained Random Forest Classifier to compare with other visualizations  |
 | Jennifer Deng  | Cleaned dataset, trained and evaluated the EBM model, created visualizations using interpret package, attempted hierarchical clustering, first round of DBSCAN, KMeans, PCA |
 | Cheryl Hwang  | 2nd attempt at cleaning dataset by running dimension reduction after using median imputing and one-hot encoding. Used feature selection (k-means with ANOVA scoring) and near zero variance feature reduction. Tested these methods by running Random Forest Classifier. Attempted first and second rounds of XGBoost   |
-| Mina Zakhary  | ---  |
+| Mina Zakhary  | Ran backward feature selection (using random forest) to find 10 features to drop to increase accuracy |
 | Lixin Zheng  | Attempted to run clustering models with different parameters. Performed forward feature selection on the dataset.  |
 
 
