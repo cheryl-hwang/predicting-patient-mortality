@@ -102,7 +102,9 @@ Below is the baseline ROC, bolded in *Table 1*.
 We tried 4 different forms of feature selection: k means ANOVA, forward feature selection, backward feature selection, and Random Forest Classifier’s (RFC) feature_importances. 
 
 
-A feature selected from k means ANOVA, RFC feature_importances, and forward selections is d1_lactate_max, which is the highest concentration of lactate in the patient’s serum or plasma during their first 24 hour stay. Lactate concentration in plasma is directly correlated with tissue hypoxia, which is a lack of oxygen in the tissue and very life-threatening. This is an interesting feature to pursue. 
+A feature selected from k means ANOVA, RFC feature_importances, and forward selections is d1_lactate_max, which is the highest concentration of lactate in the patient’s serum or plasma during their first 24 hour stay. Lactate concentration in plasma is directly correlated with tissue hypoxia, which is a lack of oxygen in the tissue and very life-threatening. This is an interesting feature to pursue.
+
+
 Kmeans ANOVA, RFC feature_importances, and forward selection all pulled out lab vitals (marked by d1). It may be worthwhile to pull out these features specifically and rank their relative importances.  
 
 
@@ -111,7 +113,8 @@ The k means-based feature selection pulled out three gcs values are integer scor
 
 The forward feature selection and RFC feature_importances pulled out a few more Apache values. The only one in common is urineout_apache, which is the total urine expelled during the first 24 hours of stay. The amount of urine expelled is correlated with bodily failure, where less urine means higher failure. These two methods also pulled out some binary features that are expected, such as aids, cirrhosis, lymphoma, and readmission status. The only binary feature that was pulled out and unexpected is 'ethnicity_Native American'. This may be because there is a small total of this feature and results were skewed.  
 
-We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
+
+The backward feature selection ran with an effort to drop a total of 10 features, but it was found out that dropping just 4 features yields the highest ROC AUC. The features dropped include 'h1_diasbp_max', 'h1_glucose_min', and 'icu_type_SICU'. 
 
 ### Next Steps
 Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model
