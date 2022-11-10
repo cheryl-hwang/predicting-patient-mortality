@@ -15,12 +15,27 @@ We hypothesize that a variety of indicators play an important role in patient su
 
 We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
 
+## Model Performances and Parameters
+| Model         | Variance Threshold (p=0.8)| PCA | Number of features | Train/test split | Train Time | AUC Score | Accuracy |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| EBM           | N  | N | 236  | Test size = 0.33 | 2 min, 30 s  | 0.8962  | --  |
+| EBM           | Y | N  | 158  | Test size = 0.33  | 1 min, 16 s  | 0.8920  | --- |
+| EBM           | N  | Y | 50  | Test size = 0.33   |54 s | 0.8691  | ---  |
+| RF            | N  | N  | 236 | Test size = 0.33  | 10 s  | 0.8500 | ---  |
+| XGBoost       | N  | N  | 236  | Test size = 0.15  | 13 min  | 0.9000  | --- |
+| EBM           | N  | N | 233 | Test size = 0.33 | 2 min  | 0.8939| ---|
+| RF (after NZV dimension reduction) | 0.005  | N  | 208  | Test size = 0.33  | 42 s  | 0.6098 | 0.9300  |
+| RF (after feature selection)| N  | N  | 10  | Test size = 0.33  | 15 s  | 0.6058 | 0.9200  |
+| XGBoost (after NZV dimension reduction)| 0.005 | N  | 208  | Test size = 0.33  | 4 min, 59 s | 0.6598 | 0.9269  |
+
+
 ## Proposed Timeline
 [Machine Learning Gantt Chart_Phase1.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9730315/Machine.Learning.Gantt.Chart_Phase1.xlsx)
 
 
 ## Contribution Table
 <img width="653" alt="Screen Shot 2022-10-05 at 9 20 10 PM" src="https://user-images.githubusercontent.com/115046770/194192815-c4be91dc-0f74-4568-a799-bc9ff1cac4f1.png">
+
 
 ### References 
 1. Raffa, Jesse & Johnson, Alistair & Celi, Leo & Pollard, Tom & Pilcher, David & Badawi, Omar. (2019). 33: THE GLOBAL OPEN SOURCE SEVERITY OF ILLNESS SCORE (GOSSIS). Critical Care Medicine. 47. 17. 10.1097/01.ccm.0000550825.30295.dd. 
