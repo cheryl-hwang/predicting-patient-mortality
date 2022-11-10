@@ -62,6 +62,8 @@ For which metrics are most relevant, we decided upon area under the ROC curve af
 Below is the baseline ROC, bolded in *Table 1*.
 ![*Figure 1*. The ROC for the baseline model.](baseline_AUROC.png)
 
+#### *Figure 1*. The ROC for the baseline model.
+
 
 ### Model Performances and Parameters
 | Model         | Variance Threshold (p=0.8)| PCA | Number of features | Train/test split | Train Time | AUC Score | Accuracy |
@@ -77,7 +79,7 @@ Below is the baseline ROC, bolded in *Table 1*.
 | XGBoost (after NZV dimension reduction)| 0.005 | N  | 208  | Test size = 0.33  | 4 min, 59 s | 0.6598 | 0.9269  |
 
 
-*Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
+#### *Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
 
 ### Discussion
 We hypothesize that a variety of indicators play an important role in patient survival, including age, BMI, and the ICU admit source. Furthermore, traits that indicate that the patient was healthy prior to the admission would boost their survival chances. 
