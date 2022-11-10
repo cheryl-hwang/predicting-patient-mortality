@@ -53,10 +53,19 @@ We captured the results of these methods and their corresponding models in *Tabl
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
 
-## Model Performances and Parameters
+## Results and Discussion 
+
+### Model Performance Metrics
+
+For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 1*.
+
+Below is the baseline ROC, bolded in *Table 1*.
+
+
+### Model Performances and Parameters
 | Model         | Variance Threshold (p=0.8)| PCA | Number of features | Train/test split | Train Time | AUC Score | Accuracy |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| EBM           | N  | N | 236  | Test size = 0.33 | 2 min, 30 s  | 0.8962  | --  |
+| **EBM**           | **N**  | **N** | **236**  | **Test size = 0.33** | **2 min, 30 s**  | **0.8962**  | **--**  |
 | EBM           | Y | N  | 158  | Test size = 0.33  | 1 min, 16 s  | 0.8920  | --- |
 | EBM           | N  | Y | 50  | Test size = 0.33   |54 s | 0.8691  | ---  |
 | RF            | N  | N  | 236 | Test size = 0.33  | 10 s  | 0.8500 | ---  |
@@ -69,7 +78,7 @@ We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Fo
 
 *Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
 
-## Potential Results and Discussion 
+### Discussion
 We hypothesize that a variety of indicators play an important role in patient survival, including age, BMI, and the ICU admit source. Furthermore, traits that indicate that the patient was healthy prior to the admission would boost their survival chances. 
 
 We will do a detailed analysis of how our model performs in predictions. For supervised learning, we want our model to be able to predict the mortality rate of patients based on the given data. For quantitative metrics, we are looking to maximize several metrics of the model, including AUROC, F1 score, and recall.  
