@@ -64,7 +64,21 @@ Feature selection from scikit-learn's **forward feature selection** (on a smalle
 ['elective_surgery' 'readmission_status' 'arf_apache' 'gcs_unable_apache' 'ph_apache' 'urineoutput_apache' 'd1_albumin_min' 'd1_hemaglobin_min' 'd1_lactate_max' 'd1_arterial_ph_max' 'aids' 'cirrhosis' 'lymphoma' 
  'ethnicity_Native American' 'icu_type_SICU']
  ```
+ 
+ In addition, we used Random Forest Classifier feature_importances in order to analyze other top features determined important by the model. These top 20 features are:  
+ ```
+ [ ‘d1_lactate_max’ ‘d1_lactate_min’ ‘gcs_eyes_apache’ ‘d1_sysbp_min’ ‘d1_arterial_ph_min’ ‘d1_sysbp_noninvasive_min’ ‘temp_apache’ ‘d1_spo2_min’ ‘d1_heartrate_min’ ‘apache_3j_diagnosis’ ‘gcs_motor_apache’ ‘d1_mbp_min’ ‘d1_bun_min’ ‘d1_temp_max’ ‘ventilated_apache’ ‘d1_temp_min’ ‘d1_arterial_ph_max’  ‘apache_2_diagnosis’ ‘d1_mbp_noninvasive_min’ ‘heart_rate_apache’ ] 
+ ```
+ 
 We captured the results of these methods and their corresponding models in *Table 1*. 
+### Unsupervised Learning
+
+We tried several unsupervised learning methods to help visualize the data given. Our initial proposal was to use hierarchical clustering. However, with further research, we saw that hierarchical clustering is not suitable for large imbalanced datasets. With a dataset of 232 features after initial data cleaning, as well as the data imbalance, we decided to focus on PCA, K-means, and DBscan to cluster our data.  
+
+### K-means clustering
+
+We first applied Kmeans onto the dataset without any feature reduction. We graphed the elbow graph to determine that 5 was the optimal number of clusters. When plotting these 5 clustering, we see all the clusters lie in the same area, with cluster 4 being the only cluster with a slightly smaller range. To analyze further, we found the positive and negative proportions of each cluster. Here, the positive labels represent patients who have expired. With this, the data imbalance became clearer, as we see that all but cluster 4, have less than 15% of positive data points.  
+
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
