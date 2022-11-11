@@ -75,10 +75,25 @@ We captured the results of these methods and their corresponding models in *Tabl
 
 We tried several unsupervised learning methods to help visualize the data given. Our initial proposal was to use hierarchical clustering. However, with further research, we saw that hierarchical clustering is not suitable for large imbalanced datasets. With a dataset of 232 features after initial data cleaning, as well as the data imbalance, we decided to focus on PCA, K-means, and DBscan to cluster our data.  
 
-### K-means clustering
+#### K-means clustering
 
 We first applied Kmeans onto the dataset without any feature reduction. We graphed the elbow graph to determine that 5 was the optimal number of clusters. When plotting these 5 clustering, we see all the clusters lie in the same area, with cluster 4 being the only cluster with a slightly smaller range. To analyze further, we found the positive and negative proportions of each cluster. Here, the positive labels represent patients who have expired. With this, the data imbalance became clearer, as we see that all but cluster 4, have less than 15% of positive data points.  
 
+![*Figure 3*. K-means on dataset.](kmeans1.png)
+
+#### *Figure 3*. Label Distribution.
+
+We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means.  
+
+![*Figure 4*. K-means on reduced dataset.](kmeans2.png)
+
+#### *Figure 4*. Label Distribution.
+
+We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data.  
+
+![*Figure 5*. K-means results.](kmeans3.png)
+
+#### *Figure 5*. K-means results.
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
@@ -131,7 +146,7 @@ The forward feature selection and RFC feature_importances pulled out a few more 
 The backward feature selection ran with an effort to drop a total of 10 features, but it was found out that dropping just 4 features yields the highest ROC AUC. The features dropped include 'h1_diasbp_max', 'h1_glucose_min', and 'icu_type_SICU'. 
 
 ### Next Steps
-Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model
+Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model.
 
 ## Proposed Timeline
 [Machine Learning Gantt Chart_Phase1.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9730315/Machine.Learning.Gantt.Chart_Phase1.xlsx)
@@ -142,7 +157,7 @@ Moving forward, we want to continue to pursue and combine our various methods of
 | ------------- | ------------- |
 | Shravani Dammu | Attempted running Hierarchical clustering, second round of KMeans (along with Positive/Negative percentage per cluster). Found top Feature_Importances from the trained Random Forest Classifier to compare with other visualizations  |
 | Jennifer Deng  | Cleaned dataset, trained and evaluated the EBM model, created visualizations using interpret package, attempted hierarchical clustering, first round of DBSCAN, KMeans, PCA |
-| Cheryl Hwang  | 2nd attempt at cleaning dataset by running dimension reduction after using median imputing and one-hot encoding. Used feature selection (k-means with ANOVA scoring) and near zero variance feature reduction. Tested these methods by running Random Forest Classifier. Attempted first and second rounds of XGBoost   |
+| Cheryl Hwang  | 2nd attempt at cleaning dataset by running dimension reduction after using median imputing and one-hot encoding. Used feature selection (k-means with ANOVA scoring) and near zero variance feature reduction. Tested these methods by running Random Forest Classifier. Attempted first and second rounds of XGBoost, Feature selection results discussion.   |
 | Mina Zakhary  | Ran backward feature selection (using random forest) to find 10 features to drop to increase accuracy |
 | Lixin Zheng  | Attempted to run clustering models with different parameters. Performed forward feature selection on the dataset.  |
 
