@@ -105,9 +105,9 @@ We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Fo
 For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 1*.
 
 Below is the baseline ROC, bolded in *Table 1*.
-![*Figure 3*. The ROC for the baseline model.](baseline_AUROC.png)
+![*Figure 6*. The ROC for the baseline model.](baseline_AUROC.png)
 
-#### *Figure 3*. The ROC for the baseline model.
+#### *Figure 6*. The ROC for the baseline model.
 
 
 ### Model Performances and Parameters
@@ -149,7 +149,7 @@ The backward feature selection ran with an effort to drop a total of 10 features
 Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model.
 
 ## Proposed Timeline
-[Machine Learning Gantt Chart_Phase1.xlsx](https://github.com/cheryl-hwang/predicting-patient-mortality/files/9730315/Machine.Learning.Gantt.Chart_Phase1.xlsx)
+[Machine Learning Gantt Chart_Phase2.xlsx](https://gtvault-my.sharepoint.com/:x:/g/personal/jdeng61_gatech_edu/EefVxgdR04FJi-TnycJe8McB9epcDEmSAEflLO74bSiccw?e=jR6yYZ)
 
 
 ## Contribution Table
