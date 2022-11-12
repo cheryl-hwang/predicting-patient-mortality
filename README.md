@@ -109,27 +109,13 @@ Below is the baseline ROC, bolded in *Table 1*.
 
 #### *Figure 6*. The ROC for the baseline model.
 
-![*Figure 7*.](feature_age.png)
+![*Figure 7*.](age_global_explanation.png)
 #### *Figure 7*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
 
 
-
-
-
 ### Model Performances and Parameters
-| Model         | Variance Threshold (p=0.8)| PCA | Number of features | Train/test split | Train Time | AUC Score | Accuracy |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| **EBM**           | **N**  | **N** | **236**  | **Test size = 0.33** | **2 min, 30 s**  | **0.8962**  | **--**  |
-| EBM           | Y | N  | 158  | Test size = 0.33  | 1 min, 16 s  | 0.8920  | --- |
-| EBM           | N  | Y | 50  | Test size = 0.33   |54 s | 0.8691  | ---  |
-| RF            | N  | N  | 236 | Test size = 0.33  | 10 s  | 0.8500 | ---  |
-| XGBoost       | N  | N  | 236  | Test size = 0.15  | 13 min  | 0.9000  | --- |
-| EBM           | N  | N | 233 | Test size = 0.33 | 2 min  | 0.8939| ---|
-| RF (after NZV dimension reduction) | 0.005  | N  | 208  | Test size = 0.33  | 42 s  | 0.6098 | 0.9300  |
-| RF (after feature selection)| N  | N  | 10  | Test size = 0.33  | 15 s  | 0.6058 | 0.9200  |
-| XGBoost (after NZV dimension reduction)| 0.005 | N  | 208  | Test size = 0.33  | 4 min, 59 s | 0.6598 | 0.9269  |
 
-
+![*Table 1*. Results Table.](results_table.png)
 #### *Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
 
 ### Feature Selection Results
@@ -159,13 +145,7 @@ Moving forward, we want to continue to pursue and combine our various methods of
 
 
 ## Contribution Table
-| Team Member   | Contribution  |
-| ------------- | ------------- |
-| Shravani Dammu | Attempted running Hierarchical clustering, second round of KMeans (along with Positive/Negative percentage per cluster). Found top Feature_Importances from the trained Random Forest Classifier to compare with other visualizations  |
-| Jennifer Deng  | Cleaned dataset, trained and evaluated the EBM model, created visualizations using interpret package, attempted hierarchical clustering, first round of DBSCAN, KMeans, PCA |
-| Cheryl Hwang  | 2nd attempt at cleaning dataset by running dimension reduction after using median imputing and one-hot encoding. Used feature selection (k-means with ANOVA scoring) and near zero variance feature reduction. Tested these methods by running Random Forest Classifier. Attempted first and second rounds of XGBoost, Feature selection results discussion.   |
-| Mina Zakhary  | Ran backward feature selection (using random forest) to find 10 features to drop to increase accuracy |
-| Lixin Zheng  | Attempted to run clustering models with different parameters. Performed forward feature selection on the dataset.  |
+![*Table 2*. Contribution Table.](contributions_table.png)
 
 
 
