@@ -81,19 +81,19 @@ We first applied Kmeans onto the dataset without any feature reduction. We graph
 
 ![*Figure 3*. K-means on dataset.](kmeans1.png)
 
-#### *Figure 3*. Label Distribution.
+#### *Figure 3*. Initial K-means Distribution and Elbow Graph.
 
 We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 4*).  
 
 ![*Figure 4*. K-means on reduced dataset.](kmeans2.png)
 
-#### *Figure 4*. Label Distribution.
+#### *Figure 4*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
 
 We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data (*Figure 5*).  
 
 ![*Figure 5*. K-means results.](kmeans3.png)
 
-#### *Figure 5*. K-means results.
+#### *Figure 5*. K-means Distribution on Final Feature Reduced Dataset
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
@@ -108,6 +108,12 @@ Below is the baseline ROC, bolded in *Table 1*.
 ![*Figure 6*. The ROC for the baseline model.](baseline_AUROC.png)
 
 #### *Figure 6*. The ROC for the baseline model.
+
+![*Figure 7*.](feature_age.png)
+#### *Figure 7*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
+
+
+
 
 
 ### Model Performances and Parameters
@@ -146,7 +152,7 @@ The forward feature selection and RFC feature_importances pulled out a few more 
 The backward feature selection ran with an effort to drop a total of 10 features, but it was found out that dropping just 4 features yields the highest ROC AUC. The features dropped include 'h1_diasbp_max', 'h1_glucose_min', and 'icu_type_SICU'. 
 
 ### Next Steps
-Moving forward, we want to continue to pursue and combine our various methods of feature selection. We are also planning on creating a neural network model.
+Moving forward, we want to continue to pursue and combine our various methods of feature selection. In addition, we will also try more feature reduced data on K-Means, in order to find more optimal clustering distributions. We are also planning on creating a neural network model.
 
 ## Proposed Timeline
 [Machine Learning Gantt Chart_Phase2.xlsx](https://gtvault-my.sharepoint.com/:x:/g/personal/jdeng61_gatech_edu/EefVxgdR04FJi-TnycJe8McB9epcDEmSAEflLO74bSiccw?e=jR6yYZ)
