@@ -77,21 +77,25 @@ We tried several unsupervised learning methods to help visualize the data given.
 
 #### K-means clustering
 
-We first applied Kmeans onto the dataset without any feature reduction. We graphed the elbow graph to determine that 5 was the optimal number of clusters. When plotting these 5 clustering, we see all the clusters lie in the same area, with cluster 4 being the only cluster with a slightly smaller range. To analyze further, we found the positive and negative proportions of each cluster. Here, the positive labels represent patients who have expired. With this, the data imbalance became clearer, as we see that all but cluster 4, have less than 15% of positive data points (*Figure 3*).  
+We first applied Kmeans onto the dataset without any feature reduction. We graphed the elbow graph to determine that 5 was the optimal number of clusters. When plotting these 5 clustering, we see all the clusters lie in the same area, with cluster 4 being the only cluster with a slightly smaller range. To analyze further, we found the positive and negative proportions of each cluster. Here, the positive labels represent patients who have expired. With this, the data imbalance became clearer, as we see that all but cluster 4, have less than 15% of positive data points (*Figure 3*). The label distribution for each cluster is shown in Figure 4.  
 
 ![*Figure 3*. K-means on dataset.](kmeans1.png)
 
 #### *Figure 3*. Initial K-means Distribution and Elbow Graph.
 
+![*Figure 4*. Label distribution for clusters.](cluster_stacked_plot4.png)
+
+#### *Figure 4*.  Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
+
 We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 4*).  
 
-![*Figure 4*. K-means on reduced dataset.](kmeans2.png)
+![*Figure 5*. K-means on reduced dataset.](kmeans2.png)
 
-#### *Figure 4*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
+#### *Figure 5*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
 
 We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data (*Figure 5*).  
 
-![*Figure 5*. K-means results.](kmeans3.png)
+![*Figure 6*. K-means results.](kmeans3.png)
 
 #### *Figure 5*. K-means Distribution on Final Feature Reduced Dataset
 
