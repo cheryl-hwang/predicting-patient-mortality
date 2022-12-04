@@ -85,7 +85,27 @@ We first applied Kmeans onto the dataset without any feature reduction. We graph
 
 ![*Figure 4*. Label distribution for clusters.](cluster_stacked_plot4.png)
 
-#### *Figure 4*.  Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
+#### *Figure 4*.  Label distribution for clusters
+
+Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
+
+Cluster analysis was conducted to see which features would be most important for Cluster 3. Granted, there were only 29 patients in this cluster, so results should not be generalized. The ranking is as follows: 
+
+![*Cluster 3 Features*.](cluster3_Features.png)
+
+The top 10 most important features for C0 are as follows: 
+
+![*Cluster 0 Features*.](cluster0_features.png)
+
+![*Patients per cluster.*.](patients_per_cluster.png)
+
+#### *Table 1*. Shows the number of patients per cluster from DBSCAN. eps = 0.1, min_pts = 30.  
+
+![*Figure 5*. Feature Scatterplots.](feat_scatterplots.png)
+
+#### *Figure 5*.  Pairwise interaction scatter plots show the relationship between pairs of variables, color-coded by label.
+
+As suspected, more positive labels appear with higher ranges of lactate. There is also an observed decrease in pH as lactate increases, and the number of positive labels increase. Accordingly, systolic blood pressure also decreases with an increase in positive labels.
 
 We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 4*).  
 
@@ -119,8 +139,19 @@ Below is the baseline ROC, bolded in *Table 1*.
 
 ### Model Performances and Parameters
 
-![*Table 1*. Results Table.](results_table.png)
-#### *Table 1. Displays model performance based on parameters. The best-performing model is also the baseline.*
+![*Table 1*. Results Table.](Model_benchmarks.png)
+#### *Table 1. Displays model performance based on parameters.*
+
+![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
+#### *Figure 1. This figure shows the tradeoff between model train time and accuracy..*
+
+### K-fold Cross Validation
+
+![*Table 3*. K-fold CV.](Kfolds_CV.png)
+#### *Table 3*. K-Folds Cross Validation for Each Model Configuration Results
+
+![*Figure X*. K-fold CV Box and Whisker.](Kfolds_CV_boxwhiskers.png)
+#### *Figure X*. K-Folds Cross Validation Box and Whisker Plot. ROC-AUC vs. Configuration
 
 ### Feature Selection Results
 
