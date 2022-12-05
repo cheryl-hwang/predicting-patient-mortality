@@ -101,25 +101,32 @@ We then applied K-means to the dataset that went through feature reduction. Howe
 
 
 ![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
+#### *Figure 6*. Proportions on Data (No Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
+ 
+
+![*Cluster 0 Features*.](features.png)
+#### *Figure 7*. Top 10 most important features from Cluster 1 in KMeans on data without any feature reduction.
 
 
 ![*Figure 7*. K-means on reduced dataset.](data_proportions_removed_var.png)
 
 
-#### *Figure 6*. Proportions on Data (Removed Features of 0.005 variance):
+#### *Figure 8*. Proportions on Data (Removed Features of 0.005 variance):
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
 
 
 ![*Figure 8*. K-means on reduced dataset.](data_proportions_after_fs.png)
-#### *Figure 7*. Proportions on Data (Top 10 features after Feature Reduction) 
+#### *Figure 9*. Proportions on Data (Top 10 features after Feature Reduction) 
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
 
 #### DBScan
 ![*Figure 9*. Label distribution for clusters.](cluster_stacked_plot4.png)
 
-#### *Figure 8*.  Label distribution for clusters using DBScan.
+#### *Figure 10*.  Label distribution for clusters using DBScan.
 
 Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
 
@@ -133,13 +140,7 @@ Cluster analysis was conducted to see which features would be most important for
 
 The top 10 most important features for C0 are as follows: 
 
-![*Cluster 0 Features*.](cluster0_features.png)
-#### *Figure 9*. Proportions on Data (No Feature Reduction) 
-Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
-Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
-
-![*Cluster 0 Features*.](features.png)
-#### *Figure 10*. Top 10 most important features from Cluster 1 in KMeans on data without any feature reduction.
+![*Cluster 0 Features*.](cluster0_features.png) 
 
 
 ### Supervised Learning
