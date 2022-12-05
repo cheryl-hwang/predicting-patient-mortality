@@ -192,7 +192,7 @@ The forward feature selection and RFC feature_importances pulled out a few more 
 The backward feature selection ran with an effort to drop a total of 10 features, but it was found out that dropping just 4 features yields the highest ROC AUC. The features dropped include 'h1_diasbp_max', 'h1_glucose_min', and 'icu_type_SICU'. 
 
 ### Next Steps
-Moving forward, we want to continue to pursue and combine our various methods of feature selection. In addition, we will also try more feature reduced data on K-Means, in order to find more optimal clustering distributions. We are also planning on creating a neural network model.
+For future research, we can continue to benchmark and see if more blackbox models like Neural Networks can learn the data better. There were also a variety of parameters that could be tweaked in order for better results. We can also experiment with creating ensemble classifiers, that use input from multiple top-performing models to classify patient mortality. Additionally, as mentioned in class, using logistic regression to predict probability of survival will be more applicable in the real world.
 
 ## Proposed Timeline
 [Machine Learning Gantt Chart_Phase2.xlsx](https://gtvault-my.sharepoint.com/:x:/g/personal/jdeng61_gatech_edu/EefVxgdR04FJi-TnycJe8McB9epcDEmSAEflLO74bSiccw?e=jR6yYZ)
