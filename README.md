@@ -201,7 +201,7 @@ Moving forward, we want to continue to pursue and combine our various methods of
 ![*Table 2*. Contribution Table.](contributions_table.png)
 
 ## Contribution Table for Final
-![*Table 3*. Contribution Table.](contributions_table.png)
+![*Table 3*. Contribution Table.](Final_contribution_table.png)
 
 
 ### References 
