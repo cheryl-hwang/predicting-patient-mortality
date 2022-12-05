@@ -93,10 +93,6 @@ Cluster analysis was conducted to see which features would be most important for
 
 ![*Cluster 3 Features*.](cluster3_Features.png)
 
-The top 10 most important features for C0 are as follows: 
-
-![*Cluster 0 Features*.](cluster0_features.png)
-
 ![*Patients per cluster.*.](patients_per_cluster.png)
 
 #### *Table 1*. Shows the number of patients per cluster from DBSCAN. eps = 0.1, min_pts = 30.  
@@ -123,6 +119,12 @@ Cluster Analysis on these 5 clusters shows the 10 most important features per cl
 
 
 ![*Figure 5*. K-means on reduced dataset.](data_proportions_after_fs.png)
+
+
+The top 10 most important features for C0 are as follows: 
+
+![*Cluster 0 Features*.](cluster0_features.png)
+
 #### *Figure 9*. Proportions on Data (Removed Features of 0.005 variance):
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
@@ -159,7 +161,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Table 2. Displays model performance based on parameters.*
 
 ![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
-#### *Figure 12. This figure shows the tradeoff between model train time and accuracy..*
+#### *Figure 12. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running. *
 
 ### K-fold Cross Validation
 
@@ -195,9 +197,11 @@ Moving forward, we want to continue to pursue and combine our various methods of
 [Machine Learning Gantt Chart_Phase2.xlsx](https://gtvault-my.sharepoint.com/:x:/g/personal/jdeng61_gatech_edu/EefVxgdR04FJi-TnycJe8McB9epcDEmSAEflLO74bSiccw?e=jR6yYZ)
 
 
-## Contribution Table
+## Contribution Table for Midtern
 ![*Table 2*. Contribution Table.](contributions_table.png)
 
+## Contribution Table for Final
+![*Table 3*. Contribution Table.](contributions_table.png)
 
 
 ### References 
