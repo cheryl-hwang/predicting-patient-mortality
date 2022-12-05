@@ -142,9 +142,9 @@ We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Fo
 
 ### Model Performance Metrics
 
-For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 1*.
+For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 2*.
 
-Below is the baseline ROC, bolded in *Table 1*.
+Below is the baseline ROC, bolded in *Table 2*.
 ![*Figure 6*. The ROC for the baseline model.](baseline_AUROC.png)
 
 #### *Figure 11*. The ROC for the baseline model.
