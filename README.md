@@ -107,20 +107,13 @@ The top 10 most important features for C0 are as follows:
 
 As suspected, more positive labels appear with higher ranges of lactate. There is also an observed decrease in pH as lactate increases, and the number of positive labels increase. Accordingly, systolic blood pressure also decreases with an increase in positive labels.
 
-We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 4*).  
+We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 5*).  
 
 ![*Figure 5*. K-means on reduced dataset.](kmeans2.png)
 
 #### *Figure 6*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
 
-We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data (*Figure 5*).  
-
-![*Figure 6*. K-means results.](kmeans3.png)
-
-#### *Figure 7*. K-means Distribution on Final Feature Reduced Dataset
-
-### Supervised Learning
-We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
+We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data (*Figure 6*).  
 
 
 ![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
@@ -139,6 +132,10 @@ From this round of KMeans Clustering, we don’t see stark difference in cluster
 #### *Figure 10*. Proportions on Data (Top 10 features after Feature Reduction) 
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
+
+
+### Supervised Learning
+We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
 
 
 ## Results and Discussion 
