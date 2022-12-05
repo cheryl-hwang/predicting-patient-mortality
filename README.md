@@ -162,7 +162,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Table 2. Displays model performance based on parameters.*
 
 ![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
-#### *Figure 12. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running. *
+#### *Figure 12. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running.*
 
 ### K-fold Cross Validation
 
