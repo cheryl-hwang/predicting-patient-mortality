@@ -71,6 +71,14 @@ Feature selection from scikit-learn's **forward feature selection** (on a smalle
  ```
  
 We captured the results of these methods and their corresponding models in *Table 1*. 
+
+
+![*Figure 3*. Feature Scatterplots.](feat_scatterplots.png)
+
+#### *Figure 3*.  Pairwise interaction scatter plots show the relationship between pairs of variables, color-coded by label.
+
+As suspected, more positive labels appear with higher ranges of lactate. There is also an observed decrease in pH as lactate increases, and the number of positive labels increase. Accordingly, systolic blood pressure also decreases with an increase in positive labels.
+
 ### Unsupervised Learning
 
 We tried several unsupervised learning methods to help visualize the data given. Our initial proposal was to use hierarchical clustering. However, with further research, we saw that hierarchical clustering is not suitable for large imbalanced datasets. With a dataset of 232 features after initial data cleaning, as well as the data imbalance, we decided to focus on PCA, K-means, and DBscan to cluster our data.  
@@ -79,13 +87,47 @@ We tried several unsupervised learning methods to help visualize the data given.
 
 We first applied Kmeans onto the dataset without any feature reduction. We graphed the elbow graph to determine that 5 was the optimal number of clusters. When plotting these 5 clustering, we see all the clusters lie in the same area, with cluster 4 being the only cluster with a slightly smaller range. To analyze further, we found the positive and negative proportions of each cluster. Here, the positive labels represent patients who have expired. With this, the data imbalance became clearer, as we see that all but cluster 4, have less than 15% of positive data points (*Figure 3*). The label distribution for each cluster is shown in Figure 4.  
 
-![*Figure 3*. K-means on dataset.](kmeans1.png)
+![*Figure 4*. K-means on dataset.](kmeans1.png)
 
-#### *Figure 3*. Initial K-means Distribution and Elbow Graph.
+#### *Figure 4*. Initial K-means Distribution and Elbow Graph.
 
-![*Figure 4*. Label distribution for clusters.](cluster_stacked_plot4.png)
+We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 5*).  
 
-#### *Figure 4*.  Label distribution for clusters
+![*Figure 5*. K-means on reduced dataset.](kmeans2.png)
+
+#### *Figure 5*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
+
+We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. This can possibly be due to the fact we reduced from 186 features to only 10 features, where this much of a drop in features could of a caused a problem in visualizing the data in this scatterplot.
+
+
+![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
+
+The top 10 most important features for C0 are as follows: 
+
+![*Cluster 0 Features*.](cluster0_features.png)
+#### *Figure 6*. Proportions on Data (No Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
+
+
+
+![*Figure 7*. K-means on reduced dataset.](data_proportions_removed_var.png)
+
+
+#### *Figure 7*. Proportions on Data (Removed Features of 0.005 variance):
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
+
+
+![*Figure 8*. K-means on reduced dataset.](data_proportions_after_fs.png)
+#### *Figure 8*. Proportions on Data (Top 10 features after Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
+
+#### DBScan
+![*Figure 9*. Label distribution for clusters.](cluster_stacked_plot4.png)
+
+#### *Figure 9*.  Label distribution for clusters using DBScan.
 
 Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
 
@@ -96,46 +138,6 @@ Cluster analysis was conducted to see which features would be most important for
 ![*Patients per cluster.*.](patients_per_cluster.png)
 
 #### *Table 1*. Shows the number of patients per cluster from DBSCAN. eps = 0.1, min_pts = 30.  
-
-![*Figure 5*. Feature Scatterplots.](feat_scatterplots.png)
-
-#### *Figure 5*.  Pairwise interaction scatter plots show the relationship between pairs of variables, color-coded by label.
-
-As suspected, more positive labels appear with higher ranges of lactate. There is also an observed decrease in pH as lactate increases, and the number of positive labels increase. Accordingly, systolic blood pressure also decreases with an increase in positive labels.
-
-We also applied K-means to two reduced datasets. We first applied K-means on the dataset that removed features with variances of .003 and .005. This in total, removed 44 features, resulting in a dataset with 208 features. However, this reduction still resulted in similar results as the past dataset. The only difference seen could be the range of area the 4th cluster covers is slightly larger than that of the past round k-means (*Figure 5*).  
-
-![*Figure 5*. K-means on reduced dataset.](kmeans2.png)
-
-#### *Figure 6*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
-
-We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. This can possibly be due to the fact we reduced from 186 features to only 10 features, where this much of a drop in features could of a caused a problem in visualizing the data in this scatterplot.
-
-
-![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
-
-The top 10 most important features for C0 are as follows: 
-
-![*Cluster 0 Features*.](cluster0_features.png)
-#### *Figure 7*. Proportions on Data (No Feature Reduction) 
-Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
-Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
-
-
-
-![*Figure 5*. K-means on reduced dataset.](data_proportions_removed_var.png)
-
-
-#### *Figure 8*. Proportions on Data (Removed Features of 0.005 variance):
-Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
-From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
-
-
-![*Figure 5*. K-means on reduced dataset.](data_proportions_after_fs.png)
-#### *Figure 9*. Proportions on Data (Top 10 features after Feature Reduction) 
-Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
-In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
-
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
@@ -148,7 +150,7 @@ We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Fo
 For which metrics are most relevant, we decided upon area under the ROC curve after speaking with our mentor. We included both AUC ROC score and accuracy in *Table 2*.
 
 Below is the baseline ROC, bolded in *Table 2*.
-![*Figure 6*. The ROC for the baseline model.](baseline_AUROC.png)
+![*Figure 10*. The ROC for the baseline model.](baseline_AUROC.png)
 
 #### *Figure 10*. The ROC for the baseline model.
 
