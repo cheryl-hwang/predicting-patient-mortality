@@ -111,16 +111,35 @@ We also applied K-means to two reduced datasets. We first applied K-means on the
 
 ![*Figure 5*. K-means on reduced dataset.](kmeans2.png)
 
-#### *Figure 5*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
+#### *Figure 6*. K-means Distribution on Dimension Reduced Dataset (Low Variance)
 
 We then applied K-means to the dataset that went through feature reduction. However, this provided for some extremely abnormal results where the data was evenly spaced out. In addition, by looking at the label proportions, we see K-means clustered the data into either all positives or all negative labelled data (*Figure 5*).  
 
 ![*Figure 6*. K-means results.](kmeans3.png)
 
-#### *Figure 5*. K-means Distribution on Final Feature Reduced Dataset
+#### *Figure 7*. K-means Distribution on Final Feature Reduced Dataset
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
+
+
+![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
+#### *Figure 8*. Proportions on Data (No Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
+
+
+![*Figure 5*. K-means on reduced dataset.](data_proportions_after_fs.png)
+#### *Figure 9*. Proportions on Data (Removed Features of 0.005 variance):
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
+
+
+![*Figure 5*. K-means on reduced dataset.](data_proportions_removed_var.png)
+#### *Figure 10*. Proportions on Data (Top 10 features after Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
+
 
 ## Results and Discussion 
 
@@ -131,7 +150,7 @@ For which metrics are most relevant, we decided upon area under the ROC curve af
 Below is the baseline ROC, bolded in *Table 1*.
 ![*Figure 6*. The ROC for the baseline model.](baseline_AUROC.png)
 
-#### *Figure 6*. The ROC for the baseline model.
+#### *Figure 11*. The ROC for the baseline model.
 
 ![*Figure 7*.](age_global_explanation.png)
 #### *Figure 7*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
@@ -140,10 +159,10 @@ Below is the baseline ROC, bolded in *Table 1*.
 ### Model Performances and Parameters
 
 ![*Table 1*. Results Table.](Model_benchmarks.png)
-#### *Table 1. Displays model performance based on parameters.*
+#### *Table 2. Displays model performance based on parameters.*
 
 ![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
-#### *Figure 1. This figure shows the tradeoff between model train time and accuracy..*
+#### *Figure 12. This figure shows the tradeoff between model train time and accuracy..*
 
 ### K-fold Cross Validation
 
@@ -151,7 +170,7 @@ Below is the baseline ROC, bolded in *Table 1*.
 #### *Table 3*. K-Folds Cross Validation for Each Model Configuration Results
 
 ![*Figure X*. K-fold CV Box and Whisker.](Kfolds_CV_boxwhiskers.png)
-#### *Figure X*. K-Folds Cross Validation Box and Whisker Plot. ROC-AUC vs. Configuration
+#### *Figure 13*. K-Folds Cross Validation Box and Whisker Plot. ROC-AUC vs. Configuration
 
 ### Feature Selection Results
 
