@@ -102,32 +102,24 @@ We then applied K-means to the dataset that went through feature reduction. Howe
 
 ![*Figure 5*. K-means on reduced dataset.](data_proportion_no_fs.png)
 
-The top 10 most important features for C0 are as follows: 
-
-![*Cluster 0 Features*.](cluster0_features.png)
-#### *Figure 6*. Proportions on Data (No Feature Reduction) 
-Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
-Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
-
-
 
 ![*Figure 7*. K-means on reduced dataset.](data_proportions_removed_var.png)
 
 
-#### *Figure 7*. Proportions on Data (Removed Features of 0.005 variance):
+#### *Figure 6*. Proportions on Data (Removed Features of 0.005 variance):
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (features with <.005 variance removed). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 From this round of KMeans Clustering, we don’t see stark difference in cluster distribution, since all clusters still have a relatively uneven label distribution.  
 
 
 ![*Figure 8*. K-means on reduced dataset.](data_proportions_after_fs.png)
-#### *Figure 8*. Proportions on Data (Top 10 features after Feature Reduction) 
+#### *Figure 7*. Proportions on Data (Top 10 features after Feature Reduction) 
 Visualization of the label distribution from the KMeans with n_clusters=5 on the data with feature reduction (top ten features). Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
 In this last round of KMeans on the feature reduced dataset, we a slight difference in the label distribution. Specifically, C4 has a relatively balanced label distribution, albeit leaning towards more patient survival.  
 
 #### DBScan
 ![*Figure 9*. Label distribution for clusters.](cluster_stacked_plot4.png)
 
-#### *Figure 9*.  Label distribution for clusters using DBScan.
+#### *Figure 8*.  Label distribution for clusters using DBScan.
 
 Shows the percentage of label distribution for each of the 4 clusters, 5 including the noise cluster. C(0), the largest cluster, has a distribution relatively similar to the entire dataset. C(-1), the noise cluster, and C1 have a slightly more balanced distribution. C3 has a majority of patients who expired. This indicates that this cluster may be of interest. 
 
@@ -137,7 +129,18 @@ Cluster analysis was conducted to see which features would be most important for
 
 ![*Patients per cluster.*.](patients_per_cluster.png)
 
-#### *Table 1*. Shows the number of patients per cluster from DBSCAN. eps = 0.1, min_pts = 30.  
+#### *Table 1*. Shows the number of patients per cluster from DBSCAN. eps = 0.1, min_pts = 30.
+
+The top 10 most important features for C0 are as follows: 
+
+![*Cluster 0 Features*.](cluster0_features.png)
+#### *Figure 9*. Proportions on Data (No Feature Reduction) 
+Visualization of the label distribution from the KMeans with n_clusters=5 on the data without any feature reduction. Figure y has the percentages of patient survivals (0 Label) and deaths (1 Label), along with number of patients per cluster. 
+Cluster Analysis on these 5 clusters shows the 10 most important features per cluster. All clusters had ventilated_apache and gcs_motor_apache as important features. Other features that were seen in most of these clusters include gcs_eyes_apache, gcs_verbal_apache, and age. 
+
+![*Cluster 0 Features*.](features.png)
+#### *Figure 10*. Top 10 most important features from Cluster 1 in KMeans on data without any feature reduction.
+
 
 ### Supervised Learning
 We attempted 3 models: Explainable Boosted Machine (EBM), XGBoost, and Random Forest. The following table summarizes the model performances and parameters. 
@@ -152,10 +155,10 @@ For which metrics are most relevant, we decided upon area under the ROC curve af
 Below is the baseline ROC, bolded in *Table 2*.
 ![*Figure 10*. The ROC for the baseline model.](baseline_AUROC.png)
 
-#### *Figure 10*. The ROC for the baseline model.
+#### *Figure 11*. The ROC for the baseline model.
 
 ![*Figure 7*.](age_global_explanation.png)
-#### *Figure 11*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
+#### *Figure 12*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
 
 
 ### Model Performances and Parameters
@@ -164,7 +167,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Table 2. Displays model performance based on parameters.*
 
 ![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
-#### *Figure 12. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running.*
+#### *Figure 13. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running.*
 
 ### K-fold Cross Validation
 
@@ -172,7 +175,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Table 3*. K-Folds Cross Validation for Each Model Configuration Results
 
 ![*Figure X*. K-fold CV Box and Whisker.](Kfolds_CV_boxwhiskers.png)
-#### *Figure 13*. K-Folds Cross Validation Box and Whisker Plot. ROC-AUC vs. Configuration
+#### *Figure 14*. K-Folds Cross Validation Box and Whisker Plot. ROC-AUC vs. Configuration
 
 ### Feature Selection Results
 
@@ -200,7 +203,7 @@ For future research, we can continue to benchmark and see if more blackbox model
 [Machine Learning Gantt Chart_Phase2.xlsx](https://gtvault-my.sharepoint.com/:x:/g/personal/jdeng61_gatech_edu/EefVxgdR04FJi-TnycJe8McB9epcDEmSAEflLO74bSiccw?e=jR6yYZ)
 
 
-## Contribution Table for Midtern
+## Contribution Table for Midterm
 ![*Table 2*. Contribution Table.](contributions_table.png)
 
 ## Contribution Table for Final
