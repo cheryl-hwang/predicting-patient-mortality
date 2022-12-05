@@ -153,7 +153,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Figure 10*. The ROC for the baseline model.
 
 ![*Figure 7*.](age_global_explanation.png)
-#### *Figure 7*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
+#### *Figure 11*. This is an example of a global explanation of the feature age and how it affects the EBM model’s prediction. When the line is above the x-axis, this corresponds to a positive contribution to the prediction, leading to a higher likelihood of a positive label. The global explanation shows what’s expected: the older a patient is, the more likely they are to expire in the ICU. What’s interesting is a spike at around age 65. This indicates that patients 65 or older have a higher likelihood of mortality. 
 
 
 ### Model Performances and Parameters
@@ -162,7 +162,7 @@ Below is the baseline ROC, bolded in *Table 2*.
 #### *Table 2. Displays model performance based on parameters.*
 
 ![*Figure 1*. Accuracy vs. Train time.](Accuracy_vs_Train_Time.png)
-#### *Figure 11. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running. *
+#### *Figure 12. This figure shows the tradeoff between model train time and accuracy. The legend shows the layout of each data label and the green star marks our benchmark model. One EBM model (train time of 17 minutes) is not shown on this graph because it did not finish running. *
 
 ### K-fold Cross Validation
 
